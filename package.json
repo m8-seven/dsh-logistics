@@ -1,0 +1,50 @@
+{
+  "name": "dsh-freight-reconcile",
+  "version": "1.5.5",
+  "description": "DeepSeek Harness 原生物流核对面板。上传账单与价卡，按渠道自动进行三方核对并返回原格式 Excel。",
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./dist/client.js",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-sidebar"
+      ]
+    }
+  },
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "lib",
+    "dist",
+    "web",
+    "scripts",
+    "test",
+    "README.md",
+    "rname.md"
+  ],
+  "engines": {
+    "node": ">=24.9.0"
+  },
+  "scripts": {
+    "build": "node scripts/build-client.mjs",
+    "prepack": "npm run build",
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "@xmldom/xmldom": "0.9.12",
+    "decimal.js": "10.6.0",
+    "exceljs": "4.4.0",
+    "fflate": "0.8.3"
+  },
+  "license": "UNLICENSED"
+}
